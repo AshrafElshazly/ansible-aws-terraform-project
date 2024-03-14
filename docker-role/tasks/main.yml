@@ -1,0 +1,44 @@
+---
+- name: Update package cache
+  apt:
+    update_cache: yes
+
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: present
+
+- name: Add user to docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes
+
+- name: Start Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Check Git repository
+  git:
+    repo: "{{ git_repo_url }}"
+    dest: "/home/ubuntu/flask-app"
+    update: yes
+
+- name: Build Docker image from Dockerfile
+  docker_image:
+    name: flask-app
+    build:
+      path: "/home/ubuntu/flask-app"
+    source: build
+    state: present
+
+- name: Run the Docker container
+  docker_container:
+    name: flask-app-container
+    image: "flask-app:latest"
+    state: started
+    restart_policy: always
+    ports:
+      - "5000:5000"

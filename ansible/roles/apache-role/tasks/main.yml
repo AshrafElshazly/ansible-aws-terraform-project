@@ -1,0 +1,17 @@
+---
+- name: Install apache httpd based Debian
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install apache httpd based ReadHat
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Copy index.html file to the managed host
+  copy:
+    src: "{{ html_page_src }}"
+    dest: "{{ html_page_dest }}"
