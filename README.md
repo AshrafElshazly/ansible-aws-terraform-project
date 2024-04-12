@@ -2,16 +2,6 @@
 
 This project consists of several GitHub repositories aimed at automating infrastructure provisioning, configuration management, and deployment using Terraform, Ansible, Docker, and Flask.
 
-## Repositories:
-
-1. [automation-terraform](https://github.com/ashrafelshazly/automation-terraform): Contains Terraform files for provisioning infrastructure.
-
-2. [automation-ansible](https://github.com/ashrafelshazly/automation-ansible): Includes Ansible playbooks for configuration management.
-
-3. [automation-docker-role](https://github.com/ashrafelshazly/automation-docker-role): Houses Ansible roles for Docker installation and management.
-
-4. [automation-flask-app](https://github.com/ashrafelshazly/automation-flask-app): Contains files for a Flask application to be deployed.
-
 ## Project Workflow:
 
 ### 1. Infrastructure Provisioning:
